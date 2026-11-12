@@ -6,24 +6,7 @@ public class Program {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-//        Deck deck = new Deck();
-//        Hand hand1 = new Hand();
-//        deck.shuffle();
-//
-//        for (int count = 1; count <= 2; count = count + 1) {
-//            // get a card from the deck
-//            Card card = deck.deal();
-//            // deal that card to the hand
-//            hand1.deal(card);
-//        }
-//
-//        System.out.println(deck.getSize());
-//        System.out.println(hand1.getSize());
-//
-//        int handValue = hand1.getValue();
-//        System.out.println("This hand is worth " + handValue);
-//    }
-        String winner = "";
+        String winner;
         Hand hand1 = new Hand();
         Hand hand2 = new Hand();
         Deck deck = new Deck();
@@ -61,19 +44,5 @@ public class Program {
             winner = hand2.getPlayerName();
         }
         System.out.printf("The result is: %s!\n", winner);
-    }
-
-    public static String promptForString(String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().trim();
-            if (input.isEmpty()) {
-                System.out.println("This can't be blank.");
-            } else if (input.contains("|")) {
-                System.out.println("Please don't use the | character.");
-            } else {
-                return input;
-            }
-        }
     }
 }
