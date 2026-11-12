@@ -13,6 +13,7 @@ public class Game {
         this.hands = new ArrayList<>();
     }
 
+
     public ArrayList<Hand> createHands() {
         numPlayers = promptForInt("Number of players: ");
         for (int i = 0; i < numPlayers; i++) {
@@ -22,6 +23,39 @@ public class Game {
         }
         return hands;
     }
+
+    public void hitOrStay(ArrayList<Hand> hands, Deck deck) {
+            for (Hand hand : hands) {
+                boolean active = true;
+                while (active) {
+                System.out.printf("Would you like to hit or stay %s? ", hand.getPlayerName());
+                String command = scanner.nextLine().trim().toLowerCase();
+                switch (command) {
+                    case "hit" -> {
+                        Card card = deck.deal();
+                        hand.deal(card);
+                        hand.displayCards();
+                        System.out.printf("Value: %s\n", hand.getValue());
+                        System.out.println();
+                        if (hand.getValue() > 21) {
+                            System.out.println("Bust!");
+                            System.out.println();
+                            active = false;
+                        } else if (hand.getValue() == 21) {
+                            System.out.printf("You got Blackjack %s!\n", hand.getPlayerName());
+                            System.out.println();
+                            active = false;
+                        }
+                    }
+                    case "stay" -> {
+                        System.out.println("You stay!");
+                        System.out.println();
+                        active = false;
+                    }
+                    default -> System.out.printf("Enter hit or Stay!\n", hand.getPlayerName());
+            }
+        }
+    }}
 
     public void decideWinner() {
         int highestValue = 0;
@@ -47,6 +81,7 @@ public class Game {
         System.out.printf("The result is: %s!\n", winner);
     }
 
+
     public static int promptForInt(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -69,5 +104,10 @@ public class Game {
                 return input;
             }
         }
+    }
+    public static void pressEnterToContinue() {
+        System.out.println();
+        System.out.print("Press Enter to continue...");
+        scanner.nextLine();
     }
 }

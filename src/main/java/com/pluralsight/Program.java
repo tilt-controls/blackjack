@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
@@ -16,14 +17,17 @@ public class Program {
             hand.deal(card2);
         }
 
+
         for (Hand hand : hands) {
             System.out.printf("%s's hand: \n", hand.getPlayerName());
             hand.displayCards();
             System.out.printf("Value: %d\n", hand.getValue());
             System.out.println();
         }
+        game.hitOrStay(hands, deck);
         game.decideWinner();
 
         System.out.println();
     }
+
 }

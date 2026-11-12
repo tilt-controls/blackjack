@@ -2,9 +2,11 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Deck {
     private ArrayList<Card> cards;
+    static Scanner scanner = new Scanner(System.in);
 
     public Deck() {
         cards = new ArrayList<>();
@@ -25,6 +27,7 @@ public class Deck {
     public void shuffle() {
         Collections.shuffle(cards);
     }
+
 
     public Card deal() {
         // deal the top card (if there are any cards left)
