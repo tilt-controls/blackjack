@@ -1,18 +1,30 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Hand {
     private ArrayList<Card> cards;
+    private String playerName;
 
     public Hand() {
         cards = new ArrayList<>();
+        this.playerName = "";
     }
 
     // A Card is dealt to the Hand and the Hand is responsible
     // to store the card
     public void deal(Card card) {
         cards.add(card);
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public int getSize() {
