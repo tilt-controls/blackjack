@@ -1,25 +1,26 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-import static com.pluralsight.Program.scanner;
-
-public class Player {
+public class Game {
     private int numPlayers;
     private ArrayList<Hand> hands;
+    public static Scanner scanner = new Scanner(System.in);
 
-    public Player() {
+    public Game() {
         this.numPlayers = 0;
         this.hands = new ArrayList<>();
     }
 
-    public void createHands() {
+    public ArrayList<Hand> createHands() {
         numPlayers = promptForInt("Number of players: ");
         for (int i = 0; i < numPlayers; i++) {
            Hand hand = new Hand();
            hand.setPlayerName(promptForString("Enter player name: "));
            hands.add(hand);
         }
+        return hands;
     }
 
     public void decideWinner() {
