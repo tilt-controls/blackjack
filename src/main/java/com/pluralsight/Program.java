@@ -37,8 +37,10 @@ public class Program {
             Card card2 = deck.deal();
             hand2.deal(card2);
         }
-        System.out.printf("Player %s's hand: %s\n %d\n", hand1.getPlayerName(), hand1.getValue());
+        System.out.printf("Player %s's hand: %d\n", hand1.getPlayerName(), hand1.getValue());
+        hand1.displayCards();
         System.out.printf("Player %s's hand: %d\n", hand2.getPlayerName(),hand2.getValue());
+        hand2.displayCards();
 
     }
     public static String promptForString(String prompt) {

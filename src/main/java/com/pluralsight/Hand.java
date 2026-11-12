@@ -44,4 +44,12 @@ public class Hand {
 
         return value;
     }
+
+    public void displayCards() {
+        for (Card card : cards) {
+            card.flip();
+            System.out.printf("%s of %s\n", card.getValue(), card.getSuit());
+            card.flip();
+        }
+    }
 }
