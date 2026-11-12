@@ -23,6 +23,7 @@ public class Program {
 //        int handValue = hand1.getValue();
 //        System.out.println("This hand is worth " + handValue);
 //    }
+        String winner = "";
         Hand hand1 = new Hand();
         Hand hand2 = new Hand();
         Deck deck = new Deck();
@@ -42,7 +43,26 @@ public class Program {
         System.out.printf("Player %s's hand: %d\n", hand2.getPlayerName(),hand2.getValue());
         hand2.displayCards();
 
+        System.out.println();
+        if (hand1.getValue() > 21 && hand2.getValue() > 21) {
+            winner = "Both players busted!";
+        }
+        else if (hand1.getValue() > 21) {
+            winner = hand2.getPlayerName();
+        } else if (hand2.getValue() > 21) {
+            winner = hand1.getPlayerName();
+        }
+        else if (hand1.getValue() == hand2.getValue()) {
+            winner = "A draw";
+        }
+        else if (hand1.getValue() > hand2.getValue()) {
+            winner = hand1.getPlayerName();
+        } else {
+            winner = hand2.getPlayerName();
+        }
+        System.out.printf("The result is: %s!\n", winner);
     }
+
     public static String promptForString(String prompt) {
         while (true) {
             System.out.print(prompt);
